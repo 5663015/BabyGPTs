@@ -1,33 +1,48 @@
+import json
 import traceback
-from ChatGPT_api import LLM
 from Prompts import GPTs_builder_system_prompt
+from GPTs import GPTs
 
 
 class GPTsBuilder:
-    def __init__(self) -> None:
+    def __init__(self, llm) -> None:
         self.system_prompt = GPTs_builder_system_prompt
-        self.llm = LLM()
-        self.memory = [{'role': 'system', 'content': self.system_prompt}]
+        self.llm = llm
+        self.chat_memory = [{'role': 'system', 'content': self.system_prompt}]
+        self.build_history = []
+        self.gpts_config = {}
 
-    def update_memory(self, message: list):
-        self.memory.extend(message)
+    def update_memory(self, chat_message: list):
+        '''
+        update the conversations history and build history
+        '''
+        self.chat_memory.extend(chat_message)
 
-    def chat(self, input: str):
+    def chat(self, input: str) -> str:
+        '''
+        chat with chatgpt
+        '''
+        # user message, update memory
         user_message = [{'role': 'user', 'content': input}]
         self.update_memory(user_message)
 
+        # call chatgpt
+        response = self.llm.query(self.chat_memory)
+        output = response['choices'][0]['message']['content']
+
+        # assistant message, update memory
+        assistant_message = [{'role': 'assistant', 'content': output}]
+        self.update_memory(assistant_message)
+
+        # config of GPTs
+        # TODO
         try:
-            response = self.llm.query(self.memory)
-            output = response['choices'][0]['message']['content']
-            assistant_message = [{'role': 'assistant', 'content': output}]
-            self.update_memory(assistant_message)
-        except: 
-            traceback.print_exc()
-        return output
+            self.gpts_config = json.loads(output)
+        except:
+            import warnings
+            warnings.warn("ChatGPT didn't output right json format, the default json or previous json will be output!")
+        return self.gpts_config
 
 
-if __name__ == "__main__":
-    builder = GPTsBuilder()
-    input = '请做一个广告投放助手，用户根据自然语言交互进行广告投放，要包括选择商品、设置人群标签设置出价方式、设置商品图片和营销文案四个步骤。'
-    output = builder.chat(input)
-    print(output)
+
+
