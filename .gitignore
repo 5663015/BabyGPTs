@@ -190,6 +190,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.env
 .ipynb_checkpoints/
 __pycache__/
 datasets/
@@ -200,3 +201,5 @@ test.py
 .cache/
 Tools/__pycache__/
 *.png
+*.wav
+*.mp3

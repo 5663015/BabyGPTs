@@ -1,6 +1,12 @@
 import openai
 import traceback
+import logging
+import coloredlogs
 
+
+# set log
+logger = logging.getLogger(__name__)
+coloredlogs.install(level='DEBUG', logger=logger)
 
 
 class GPTs:
@@ -24,10 +30,13 @@ class GPTs:
         self.gpts_config = None
     
     def build(self):
+        '''
+        build GPTs
+        '''
         # init memory
         self.chat_memory = [{'role': 'system', 'content': self.system_prompt}]
-        # tools
-        if len(self.tools_management.tools) == 0:
+        # init tools
+        if len(self.tools_management.tools_selected) == 0:
             self.tools = None
         else:
             self.tools = self.tools_management.get_openai_format()
@@ -41,13 +50,18 @@ class GPTs:
         self.chat_memory.extend(chat_message)
 
     def chat(self, input: str) -> str:
+        '''
+        chat with GPTs
+        '''
         self.update_memory([{'role': 'user', 'content': input}])
         # chat
         response = self.llm.query(self.chat_memory, self.tools)
         print('GPTs responese: ', response['choices'][0]['message'])
         # tool
         if 'function_call' in response['choices'][0]['message']:
-            output = self.tools_management.query_hf(response['choices'][0]['message']['function_call'])
+            function_call = response['choices'][0]['message']['function_call']
+            logger.info(f'call function: {str(function_call)}')
+            output = self.tools_management.query_hf(function_call)
         else:
             output = response['choices'][0]['message']['content']
         assistant_message = [{'role': 'assistant', 'content': output}]
@@ -55,10 +69,10 @@ class GPTs:
         return output
 
     def info(self):
-        print('Information of the created GPTs:\n ')
-        print('### name: ', self.name)
-        print('### description: ', self.description)
-        print('### system prompt: \n', self.system_prompt)
-        print('### conversation starters: \n', '**'.join([s[0] for s in self.conversation_starters]))
-        print('### tools: \n', self.tools)
+        logger.info('Information of the created GPTs:\n ')
+        logger.info('### name: ' + self.name)
+        logger.info('### description: ' + self.description)
+        logger.info('### system prompt: \n' + self.system_prompt)
+        logger.info('### conversation starters: \n' + '**'.join([s[0] for s in self.conversation_starters]))
+        logger.info('### tools to use: \n' + str(self.tools))
 

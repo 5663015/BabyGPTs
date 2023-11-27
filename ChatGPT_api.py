@@ -26,6 +26,7 @@ class LLM:
     def query(self, messages, tools=None, tool_choice='auto'):
         try:
             if tools is None:
+                # regular call
                 response = openai.ChatCompletion.create(
                         model=self.model,
                         messages=messages,
@@ -34,7 +35,7 @@ class LLM:
                         top_p=self.top_p,
                         frequency_penalty=self.frequency_penalty
                     )
-            else:
+            else:   # call with tools
                 response = openai.ChatCompletion.create(
                         model=self.model,
                         messages=messages,

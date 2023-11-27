@@ -9,26 +9,39 @@ from pydub import AudioSegment
 CACHE_PATH = '.cache'
 
 
-class HF_Tools:
+class Tools_Manager:
     def __init__(self) -> None:
-        self.tools = {}
+        self.tools_all = {}
+        self.tools_selected = {}
         self.hf_key = None
     
     def add_tool(self, tool: dict):
         '''
         add a new tool to dict
         '''
-        self.tools[tool['name']] = tool
+        self.tools_all[tool['name']] = tool
+        self.tools_selected[tool['name']] = tool
 
     def get_tools_list(self) -> list:
         '''
-        get the list of tools
+        get the list of all tools
         '''
-        return list(self.tools.keys())
+        return list(self.tools_all.keys())
+
+    def update_selected_tools(self, selected: list):
+        '''
+        update the selected tools
+        '''
+        self.tools_selected = {}
+        for tool_name in selected:
+            self.tools_selected[tool_name] = self.tools_all[tool_name]
 
     def get_openai_format(self):
+        '''
+        change selected tools to openai format
+        '''
         result = []
-        for k, v in self.tools.items():
+        for k, v in self.tools_selected.items():
             result.append(v['tool_info']['function'])
         return result
 
@@ -37,11 +50,9 @@ class HF_Tools:
         call the HF API
         '''
         model_name = payload['name']
-        model_type = self.tools[model_name]['model_type']
+        model_type = self.tools_selected[model_name]['model_type']
         model_args = json.loads(payload['arguments'])
-        api_url = self.tools[model_name]['model_url']
-        # api_url = f"https://api-inference.huggingface.co/models/{model_name.replace('_', '/')}"
-        # api_url = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
+        api_url = self.tools_selected[model_name]['model_url']
         headers = {"Authorization": f"Bearer {self.hf_key}"}
 
         response = requests.post(api_url, headers=headers, json=model_args)
