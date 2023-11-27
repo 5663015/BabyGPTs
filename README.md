@@ -13,7 +13,7 @@ The main features of BabyGPTs are:
 
 The schematic diagram of BabyGPTs is shown as follows.
 
-
+![](assets/baby_gpts.jpg)
 
 ## News
 
