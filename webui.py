@@ -25,10 +25,12 @@ llm = LLM(api_key=openai_api_key, api_base=openai_api_base, model=openai_model)
 
 # init GPTsBuilder
 builder = GPTsBuilder(llm)
+builder.hf_key = hf_key
 logger.info('GPTsBuilder init done.')
 
 # init tools
 tools_management = Tools_Manager()
+tools_management.hf_key = hf_key
 logger.info('tools management init done.')
 
 # init GPTs

@@ -1,5 +1,6 @@
 import os
 import io
+import ast
 import json
 import uuid
 import requests
@@ -38,13 +39,14 @@ class GPTsBuilder:
         # call chatgpt
         response = self.llm.query(self.chat_memory)
         output = response['choices'][0]['message']['content']
-
+        output = output.replace('\n', '\\n')
         # assistant message, update memory
         assistant_message = [{'role': 'assistant', 'content': output}]
         self.update_memory(assistant_message)
         # config of GPTs
         try:
             self.gpts_config = json.loads(output)
+            # self.gpts_config = ast.literal_eval(output)
         except:
             import warnings
             warnings.warn("ChatGPT didn't output right json format, the default json or previous json will be output!")
@@ -58,7 +60,9 @@ class GPTsBuilder:
         api_url = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
         headers = {"Authorization": f"Bearer {self.hf_key}"}
         try:
+            prompt = prompt.replace('\n', '\\n')
             response = requests.post(api_url, headers=headers, json={"inputs": f"{prompt}"})
+            print(response)
             path = os.path.join(CACHE_PATH, f'images/logo_{str(uuid.uuid4())[:10]}.png')
             image = Image.open(io.BytesIO(response.content))
             image = image.resize((128, 128))

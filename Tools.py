@@ -51,7 +51,7 @@ class Tools_Manager:
         '''
         model_name = payload['name']
         model_type = self.tools_selected[model_name]['model_type']
-        model_args = json.loads(payload['arguments'])
+        model_args = json.loads(payload['arguments'].replace('\n', ''))
         api_url = self.tools_selected[model_name]['model_url']
         headers = {"Authorization": f"Bearer {self.hf_key}"}
 
