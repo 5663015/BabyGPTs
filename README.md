@@ -2,6 +2,10 @@
 
 [**issue❓**](https://github.com/5663015/BabyGPTs/issues) | [disscussions💬](https://github.com/5663015/BabyGPTs/discussions)
 
+<p align="center" width="100%">
+    <img width="300px" src="assets/logo.jpg">
+</p>
+
 ## 💡 Introduction
 
 BabyGPTs 🍼 is a very simple implementation of OpenAI GPTs. It's current principle is to generate GPTs system instructions according to user's input, combined with custom tools, to achieve the construction of GPTs.
