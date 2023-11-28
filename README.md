@@ -68,25 +68,27 @@ python webui.py
 
 4. Input your requirements of GPTs in GPTs Builder chatbot.
 
- <img src="assets/usage1.png" style="zoom:35%;" />
+ <img src="assets/usage1.png" width="400px" />
+
+
 
 5. (Optional) Perfect  and change the generated config.
 
-<img src="assets/usage2.png" style="zoom:35%;" />
+<img src="assets/usage2.png" width="400px" />
 
 6. Add the necessary tools. You should input model_url and model description, and select model_type correctly. Then input model's parameters, including `param_name`, `type`, `description` and `required`. `requied`  indicates whether this parameter is required. Then click `add tool` button, the added tools are shown in HF tools list. You can select which tools to use in GPTs. Some reference tools can be found below.
 
-<img src="assets/usage3.png" style="zoom:35%;" />
+<img src="assets/usage3.png" width="400px" />
 
 NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
 
-<img src="assets/usage4.png" style="zoom:35%;" />
+<img src="assets/usage4.png" style="zoom:25%;" />
 
 7. Click `Preview GPTs` button to build GPTs, and you can chat with your created GPTs.
 
-<img src="assets/usage5.png" style="zoom:35%;" />
+<img src="assets/usage5.png" width="400px" />
 
-<img src="assets/usage6.png" style="zoom:35%;" />
+<img src="assets/usage6.png" width="400px" />
 
 **Some free HF tools you can refer to:**
 
