@@ -1,16 +1,19 @@
 # BabyGPTs :baby_bottle: : A simple implementation of GPTS
 
-## Tabel
+[**issue:question:**](https://github.com/5663015/BabyGPTs/issues) | [disscussions:speech_balloon:](https://github.com/5663015/BabyGPTs/discussions)
 
-- Introduction
-  - Architecture
-  - News
-  - TODO
-- Get started
-- Limitation
-- Citation
+## Table
 
-## :bulb: Intruction
+- [Introduction](##:bulb: Introduction)
+  - [Architecture](###Architecture :file_folder:)
+  - [News](###News :tada:)
+  - [TODO](###TODO :clipboard:)
+
+- [Get started](##:computer: Get started)
+- [Limitation](##:warning: Limitation)
+- [Citation](##:mag: Citation)
+
+## :bulb: Introduction
 
 BabyGPTs :baby_bottle: is a very simple implementation of OpenAI GPTs. It's current principle is to generate GPTs system instructions according to user's input, combined with custom tools, to achieve the construction of GPTs. 
 
@@ -28,7 +31,7 @@ The architecture of BabyGPTs is shown as follows.
 
 ![](assets/baby_gpts.jpg)
 
-The BabyGPTs includes two main parts: GPTs builder and GPTs. GPTs builder can generate config JSON of GPTs according user's input, including GPTs' name, description, system instruction, conversation startes and logo prompt. And user can alse define HuggingFace Inference API config, so that GPTs can call these APIs as tools. Then the GPTs can be created by config JSON and tools config. Finally, you can chat with your created GPTs.
+The BabyGPTs includes two main parts: GPTs builder and GPTs. GPTs builder can generate config JSON of GPTs according user's input, including GPTs' name, description, system instruction, conversation startes and logo prompt. And user can also define HuggingFace Inference API config, so that GPTs can call these APIs as tools. Then the GPTs can be created by config JSON and tools config. Finally, you can chat with your created GPTs.
 
 ### News :tada:
 
