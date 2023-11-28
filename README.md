@@ -19,8 +19,8 @@ BabyGPTs :baby_bottle: is a very simple implementation of OpenAI GPTs. It's curr
 The main features of BabyGPTs are:
 
 - :pencil: Natural language interaction to create GPTs.
-- :art: Gneeration of GPTs Logo, name, description and conversation starters.
-- :wrench: HuggingFace inference API calling. 
+- :art: Generation of GPTs Logo, name, description and conversation starters.
+- :wrench: HuggingFace Inference API as tools. 
 
 ### Architecture :file_folder:
 
@@ -161,13 +161,17 @@ NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
     }
     ```
 
-## :lock: Limitation
+##  :warning: Limitation
 
+Note that the BabyGPTs is only a very simple implementation of OpenAI GPTs, which only contains the tool call ability in the agent, and does not have complex memory, task planning and other modules. Therefore, BabyGPTs may not be able to handle with complex requirements, and the GPTs you create may not exactly meet your expectations. 
 
+If you want to learn more about agent, you can  refer to the following repositories.
 
-
-
-
+- [LLM-Agent-Paper-Digest](https://github.com/XueyangFeng/LLM-Agent-Paper-Digest)
+- [LLM-Agent-Survey](https://github.com/Paitesanshi/LLM-Agent-Survey)
+- [LLM-Agent-Paper-List](https://github.com/WooooDyy/LLM-Agent-Paper-List)
+- [modelscope-agent](https://github.com/modelscope/modelscope-agent)
+- [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent)
 
 ## :mag: Citation
 
