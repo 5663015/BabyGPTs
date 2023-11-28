@@ -1,31 +1,20 @@
-# BabyGPTs :baby_bottle: : A simple implementation of GPTS
+# BabyGPTs 🍼 : A simple implementation of GPTS
 
-[**issue:question:**](https://github.com/5663015/BabyGPTs/issues) | [disscussions:speech_balloon:](https://github.com/5663015/BabyGPTs/discussions)
+[**issue❓**](https://github.com/5663015/BabyGPTs/issues) | [disscussions💬](https://github.com/5663015/BabyGPTs/discussions)
 
-## Table
+## 💡 Introduction
 
-- [Introduction](##:bulb: Introduction)
-  - [Architecture](###Architecture :file_folder:)
-  - [News](###News :tada:)
-  - [TODO](###TODO :clipboard:)
-
-- [Get started](##:computer: Get started)
-- [Limitation](##:warning: Limitation)
-- [Citation](##:mag: Citation)
-
-## :bulb: Introduction
-
-BabyGPTs :baby_bottle: is a very simple implementation of OpenAI GPTs. It's current principle is to generate GPTs system instructions according to user's input, combined with custom tools, to achieve the construction of GPTs. 
+BabyGPTs 🍼 is a very simple implementation of OpenAI GPTs. It's current principle is to generate GPTs system instructions according to user's input, combined with custom tools, to achieve the construction of GPTs.
 
 ![](assets/ui.png)
 
 The main features of BabyGPTs are:
 
-- :pencil: Natural language interaction to create GPTs.
-- :art: Generation of GPTs Logo, name, description and conversation starters.
-- :wrench: HuggingFace Inference API as tools. 
+- 📝 Natural language interaction to create GPTs.
+- 🎨 Generation of GPTs Logo, name, description and conversation starters.
+- 🔧 HuggingFace Inference API as tools.
 
-### Architecture :file_folder:
+### Architecture 📁
 
 The architecture of BabyGPTs is shown as follows.
 
@@ -33,11 +22,11 @@ The architecture of BabyGPTs is shown as follows.
 
 The BabyGPTs includes two main parts: GPTs builder and GPTs. GPTs builder can generate config JSON of GPTs according user's input, including GPTs' name, description, system instruction, conversation startes and logo prompt. And user can also define HuggingFace Inference API config, so that GPTs can call these APIs as tools. Then the GPTs can be created by config JSON and tools config. Finally, you can chat with your created GPTs.
 
-### News :tada:
+### News 🎉
 
-- **[2023-11-28]:** We released the first version of BabyGPTs. 
+- **[2023-11-28]:** We released the first version of BabyGPTs.
 
-### TODO :clipboard:
+### TODO 📋
 
 - [ ] Support GPTs export, and standalone UI for GPTs.
 - [ ] Support Assistants API (Code Interpreter and Retrieval can be used)
@@ -45,7 +34,7 @@ The BabyGPTs includes two main parts: GPTs builder and GPTs. GPTs builder can ge
 - [ ] Support for more types of tools
 - [ ] More complex agents, including planning capabilities
 
-## :computer: Get started
+## 💻 Get started
 
 1. Prepare OpenAI API KEY and [HuggingFace Access Tokens](https://huggingface.co/docs/hub/security-tokens) (use for HF API KEY).
 2. prepare python environment
@@ -71,9 +60,7 @@ python webui.py
 
 4. Input your requirements of GPTs in GPTs Builder chatbot.
 
- <img src="assets/usage1.png" width="400px" />
-
-
+<img src="assets/usage1.png" width="400px" />
 
 5. (Optional) Perfect  and change the generated config.
 
@@ -109,7 +96,6 @@ NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
       "required": "true"
     }
     ```
-
   - runwayml/stable-diffusion-v1-5
 
     ```json
@@ -122,7 +108,6 @@ NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
       "required": "true"
     }
     ```
-
   - stabilityai/stable-diffusion-2-1
 
     ```json
@@ -135,7 +120,6 @@ NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
       "required": "true"
     }
     ```
-
 - Text-to-speech
 
   - facebook/mms-tts-eng
@@ -150,9 +134,8 @@ NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
       "required": "true"
     }
     ```
-  
   - facebook/musicgen-small
-  
+
     ```json
     {
       "model_url": "https://api-inference.huggingface.co/models/facebook/musicgen-small",
@@ -164,9 +147,9 @@ NOTE: `model_url` is HuggingFace Inference API, NOT the url in the browser.
     }
     ```
 
-##  :warning: Limitation
+## ⚠️ Limitation
 
-Note that the BabyGPTs is only a very simple implementation of OpenAI GPTs, which only contains the tool call ability in the agent, and does not have complex memory, task planning and other modules. Therefore, BabyGPTs may not be able to handle with complex requirements, and the GPTs you create may not exactly meet your expectations. 
+Note that the BabyGPTs is only a very simple implementation of OpenAI GPTs, which only contains the tool call ability in the agent, and does not have complex memory, task planning and other modules. Therefore, BabyGPTs may not be able to handle with complex requirements, and the GPTs you create may not exactly meet your expectations.
 
 If you want to learn more about agent, you can  refer to the following repositories.
 
@@ -176,7 +159,7 @@ If you want to learn more about agent, you can  refer to the following repositor
 - [modelscope-agent](https://github.com/modelscope/modelscope-agent)
 - [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent)
 
-## :mag: Citation
+## 🔍 Citation
 
 If you found this work useful, consider giving this repository a star and citing our paper as follows:
 
@@ -189,4 +172,3 @@ If you found this work useful, consider giving this repository a star and citing
   howpublished={\url{https://github.com/5663015/GPTs.git}},
 }
 ```
-
